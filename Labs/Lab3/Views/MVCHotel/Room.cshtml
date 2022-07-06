@@ -1,0 +1,41 @@
+﻿@model Lab3.Models.Room
+
+@{
+    ViewData["Title"] = "Room";
+}
+
+<h1>Room</h1>
+@ViewBag.Message
+
+@if (ViewBag.Message == null)
+{
+    <table class="table">
+    <thead>
+        <tr>
+            <th>
+                RoomNumber
+            </th>
+            <th>
+                Capacity
+            </th>
+            <th>
+                Occupied
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+                @Model.RoomNumber
+            </td>
+            <td>
+                @Model.Capacity
+            </td>
+            <td>
+                @Model.Occupied
+            </td>
+        </tr>
+    </tbody>
+</table>
+}
+

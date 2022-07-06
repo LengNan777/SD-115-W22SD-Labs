@@ -1,0 +1,52 @@
+﻿@model IEnumerable<Lab3.Models.Room>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>All Rooms</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.RoomNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Capacity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Occupied)
+            </th>
+            <th>
+                State
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.RoomNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Capacity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Occupied)
+            </td>
+            
+            @if(item.Occupied){
+            <td>   
+                OCCUPIED: @item.Reservations[0].Occupants
+            </td>
+            }else{
+            <td>   
+                UNOCCUPIED
+            </td>
+            }
+        </tr>
+}
+    </tbody>
+</table>
+
