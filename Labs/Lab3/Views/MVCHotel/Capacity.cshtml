@@ -1,0 +1,61 @@
+﻿@model IEnumerable<Lab3.Models.Room>
+
+@{
+    ViewData["Title"] = "Capacity";
+}
+
+<h1>Capacity</h1>
+@if (ViewBag.Remaining > 0)
+{
+    <h2 style="color:red">Remaining Rooms: @ViewBag.Remaining</h2>
+}else{
+    <h2 style="color:red">No more than 25 employees should be in this building, according to local fire codes.</h2>
+}
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.RoomNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Capacity)
+            </th>            
+            <th>
+                Occupants
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Occupied)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.RoomNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Capacity)
+            </td>
+            @if (item.Reservations.Count > 0)
+            {
+            <td>
+                @Html.DisplayFor(modelItem => item.Reservations[0].Occupants)
+            </td>
+            }
+            else
+            {
+            <td>
+                0   
+            </td>
+            }
+            <td>
+                @Html.DisplayFor(modelItem => item.Occupied)
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
